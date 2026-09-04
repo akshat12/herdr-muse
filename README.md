@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://herdr.dev"><img src="https://raw.githubusercontent.com/herdrdev/herdr/master/assets/logo.svg" alt="Herdr logo" height="72"></a>
+  <img src="assets/logo.svg" alt="herdr-muse logo" height="120">
 </p>
 
 <h1 align="center">herdr-muse</h1>

@@ -1,0 +1,17 @@
+<svg role="img" aria-label="herdr-muse logo" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect x="56" y="72" width="400" height="368" rx="36" fill="#d9dad8"/>
+  <rect x="56" y="72" width="400" height="368" rx="36" fill="none" stroke="#303438" stroke-width="24"/>
+  <line x1="56" y1="164" x2="456" y2="164" stroke="#303438" stroke-width="16"/>
+  <circle cx="104" cy="118" r="13" fill="#303438"/>
+  <circle cx="144" cy="118" r="13" fill="#303438"/>
+  <circle cx="184" cy="118" r="13" fill="#303438"/>
+  <line x1="316" y1="164" x2="316" y2="440" stroke="#303438" stroke-width="16"/>
+  <polyline points="120,236 152,268 120,300" fill="none" stroke="#303438" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="176" y="246" width="96" height="24" rx="12" fill="#303438"/>
+  <rect x="120" y="326" width="152" height="24" rx="12" fill="#303438" opacity="0.45"/>
+  <rect x="120" y="372" width="104" height="24" rx="12" fill="#e0654e"/>
+  <path d="M386 200 c2.5 27 15 39.5 42 42 c-27 2.5 -39.5 15 -42 42 c-2.5 -27 -15 -39.5 -42 -42 c27 -2.5 39.5 -15 42 -42z" fill="#e0654e"/>
+  <path d="M386 219 c1.5 16 8.5 23 24.5 24.5 c-16 1.5 -23 8.5 -24.5 24.5 c-1.5 -16 -8.5 -23 -24.5 -24.5 c16 -1.5 23 -8.5 24.5 -24.5z" fill="#d9dad8" opacity="0.85"/>
+  <circle cx="386" cy="348" r="26" fill="#43a047"/>
+  <circle cx="386" cy="348" r="38" fill="none" stroke="#43a047" stroke-width="10" opacity="0.45"/>
+</svg>
