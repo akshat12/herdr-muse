@@ -11,8 +11,7 @@
 
 <p align="center">
   Native-feeling <a href="https://herdr.dev">Herdr</a> support for
-  <a href="https://dev.meta.ai/docs/muse-code">Muse Code</a> (<code>muse</code>)
-  — with <strong>no changes to the Herdr codebase</strong>.<br>
+  <a href="https://dev.meta.ai/docs/muse-code">Muse Code</a> (<code>muse</code>).<br>
   Herdr shows your <code>muse</code> panes as <code>working</code>,
   <code>idle</code>, or <code>blocked</code> (approval needed) instead of
   <code>unknown</code>.
