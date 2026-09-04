@@ -14,13 +14,13 @@ hooks report state over the local Herdr socket with source `custom:muse`.
 One command (Herdr 0.8+):
 
 ```bash
-herdr plugin install <owner>/herdr-muse
+herdr plugin install akshat12/herdr-muse
 ```
 
 then run the **Install Muse hooks** action. Or without the plugin system:
 
 ```bash
-git clone <this-repo> && cd herdr-muse && ./install.sh
+git clone https://github.com/akshat12/herdr-muse && cd herdr-muse && ./install.sh
 ```
 
 Requirements: `herdr` and `python3` on `PATH`, an existing
