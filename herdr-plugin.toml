@@ -1,0 +1,18 @@
+id = "herdr-muse"
+name = "Herdr Muse integration"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Report Muse Code session state (idle/working/blocked) to Herdr panes"
+platforms = ["linux", "macos"]
+
+[[actions]]
+id = "install"
+title = "Install Muse hooks"
+contexts = ["workspace"]
+command = ["sh", "install.sh", "--yes"]
+
+[[actions]]
+id = "uninstall"
+title = "Uninstall Muse hooks"
+contexts = ["workspace"]
+command = ["sh", "uninstall.sh"]
