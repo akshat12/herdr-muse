@@ -18,7 +18,7 @@
     <circle cx="386" cy="348" r="38" fill="none" stroke="#43a047" stroke-width="10" opacity="0.45"/>
   </g>
   <text x="620" y="300" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="104" font-weight="700" fill="#f2f1ee">herdr-muse</text>
-  <text x="624" y="372" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="38" fill="#b9bab7">Muse Code state for Herdr panes</text>
+  <text x="624" y="372" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="38" fill="#b9bab7">Muse support for Herdr</text>
   <circle cx="628" cy="440" r="14" fill="#43a047"/>
   <text x="654" y="454" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="30" fill="#b9bab7">idle</text>
   <circle cx="758" cy="440" r="14" fill="#e0a63c"/>
