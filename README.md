@@ -1,9 +1,23 @@
-# herdr-muse
+<p align="center">
+  <a href="https://herdr.dev"><img src="https://raw.githubusercontent.com/herdrdev/herdr/master/assets/logo.svg" alt="Herdr logo" height="72"></a>
+</p>
 
-Native-feeling [Herdr](https://herdr.dev) support for
-[Muse Code](https://dev.meta.ai/docs/muse-code) (`muse`) — with **no changes
-to the Herdr codebase**. Herdr shows your `muse` panes as `working`, `idle`,
-or `blocked` (approval needed) instead of `unknown`.
+<h1 align="center">herdr-muse</h1>
+
+<p align="center">
+  <a href="https://github.com/akshat12/herdr-muse/blob/main/LICENSE"><img src="https://img.shields.io/github/license/akshat12/herdr-muse" alt="License: MIT"></a>
+  <a href="https://herdr.dev/docs/install/"><img src="https://img.shields.io/badge/herdr-%3E%3D0.8-blue" alt="Requires Herdr 0.8+"></a>
+  <img src="https://img.shields.io/badge/tested-macos-lightgrey" alt="Tested on macOS">
+</p>
+
+<p align="center">
+  Native-feeling <a href="https://herdr.dev">Herdr</a> support for
+  <a href="https://dev.meta.ai/docs/muse-code">Muse Code</a> (<code>muse</code>)
+  — with <strong>no changes to the Herdr codebase</strong>.<br>
+  Herdr shows your <code>muse</code> panes as <code>working</code>,
+  <code>idle</code>, or <code>blocked</code> (approval needed) instead of
+  <code>unknown</code>.
+</p>
 
 This uses Herdr's documented
 [custom integration](https://herdr.dev/docs/integrations/) path: Muse lifecycle
@@ -26,6 +40,11 @@ git clone https://github.com/akshat12/herdr-muse && cd herdr-muse && ./install.s
 Requirements: `herdr` and `python3` on `PATH`, an existing
 `~/.config/muse/` (run `muse` once first). Start a **new** `muse` session
 after installing — hooks load at session startup.
+
+> **Compatibility: tested on macOS (Apple Silicon) with Herdr 0.8.2 and
+> Muse 1.0.2.** Linux is declared in `herdr-plugin.toml` and the code is
+> portable (bash + python3), but it has not been verified there yet —
+> reports welcome (see Contributing).
 
 Uninstall anytime: run the **Uninstall Muse hooks** action, or
 `./uninstall.sh` (removes only Herdr-owned hook entries and the reporter).
@@ -77,6 +96,25 @@ Live run transitions a real pane through `unknown → working → done → idle`
 verifies binding release, uninstall cleanliness (settings restored), and
 `herdr plugin link` manifest validation.
 
+## Contributing
+
+PRs welcome — this is a community repo with no upstream gatekeeping.
+
+- Fork, branch, open a PR against `main` with a short description of the
+  behavior change and how you tested it.
+- Run `./tests/e2e.sh` for every change; run `./tests/e2e.sh --live`
+  (needs Herdr running) when you touch the reporter, installer, or plugin
+  manifest. Keep the suite green.
+- Reporter rules that keep this safe to install: no new runtime
+  dependencies beyond `python3`, never print to stdout, exit 0 on every
+  failure path, and keep hook entries minimal (Muse silently skips hook
+  groups with unknown members).
+- Hook payload shapes live in `tests/fixtures/` — shapes captured from a
+  live session are preferred over guesses; mark anything inferred with an
+  `_note` field as `permission_request.json` does.
+- Please don't commit machine-specific paths or session ids outside
+  `tests/fixtures/`.
+
 ## License
 
-MIT
+MIT — see [LICENSE](LICENSE).
