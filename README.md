@@ -1,8 +1,7 @@
-<p align="center">
-  <img src="assets/logo.svg" alt="herdr-muse logo" height="120">
-</p>
-
-<h1 align="center">herdr-muse</h1>
+<h1 align="center">
+  <img src="assets/logo.svg" alt="herdr-muse logo" height="48" valign="middle">
+  herdr-muse
+</h1>
 
 <p align="center">
   <a href="https://github.com/akshat12/herdr-muse/blob/main/LICENSE"><img src="https://img.shields.io/github/license/akshat12/herdr-muse" alt="License: MIT"></a>
