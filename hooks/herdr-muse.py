@@ -23,6 +23,7 @@ import os
 import shutil
 import subprocess
 import sys
+import time
 
 SOURCE = "custom:muse"
 AGENT_LABEL = "muse"
@@ -209,6 +210,42 @@ def pane_has_muse(binary, pane_id):
     return False
 
 
+ADOPTABLE_EVENTS = ("UserPromptSubmit", "PreToolUse", "PermissionRequest")
+
+
+def adopt_pane(binary, bindings, session_id, event):
+    """Bind a session that never delivered a SessionStart.
+
+    `muse resume` reuses the original session id, so muse treats the restored
+    conversation as a continuation and never emits SessionStart. A session that
+    was already running when the hooks were installed never sent one either.
+    Without this path every later event bails out on the missing binding, so
+    such a pane stays invisible to Herdr for the rest of its life.
+
+    Adoption is refused unless the pane is currently unowned, which preserves
+    the subagent protection: dispatching a subagent is itself a tool call, so
+    the lead conversation's own PreToolUse always reaches us first and claims
+    the pane, and the SessionStart guard then stops the subagent from taking
+    it. Stop and SessionEnd are excluded because adopting on them would report
+    idle for a pane we never tracked, or bind and immediately release it.
+
+    Returns the adopted pane id, or None when adoption is not safe.
+    """
+    if event not in ADOPTABLE_EVENTS:
+        return None
+    pane_id = resolve_pane(binary, ancestor_pids())
+    if pane_id is None:
+        return None
+    for known in bindings.values():
+        if known.get("pane_id") == pane_id:
+            return None
+    # Herdr ignores a report whose seq is not above the last one it recorded
+    # for this pane, and a pane we adopt may already carry a high seq from the
+    # session we are taking over. A wall-clock seed clears any prior history.
+    bindings[session_id] = {"pane_id": pane_id, "seq": int(time.time())}
+    return pane_id
+
+
 def report(binary, pane_id, state, session_id, seq, message=None):
     cmd = [
         "pane", "report-agent", pane_id,
@@ -277,7 +314,9 @@ def main():
         return 0
 
     if binding is None or not binding.get("pane_id"):
-        return 0
+        if adopt_pane(binary, bindings, session_id, event) is None:
+            return 0
+        binding = bindings[session_id]
     pane_id = binding["pane_id"]
     seq = int(binding.get("seq", 0)) + 1
 
