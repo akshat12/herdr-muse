@@ -223,10 +223,18 @@ def report(binary, pane_id, state, session_id, seq, message=None):
     return herdr_call(binary, *cmd)
 
 
-def release(binary, pane_id):
+def release(binary, pane_id, seq):
+    """Hand the pane back to Herdr.
+
+    The seq is required: Herdr ignores a pane lifecycle call whose seq is not
+    above the last one it recorded for that pane. Releasing without one is
+    silently dropped, which leaves a stale agent row sitting in
+    `herdr agent list` long after muse has exited.
+    """
     return herdr_call(
         binary, "pane", "release-agent", pane_id,
         "--source", SOURCE, "--agent", AGENT_LABEL,
+        "--seq", str(seq),
     )
 
 
@@ -298,7 +306,7 @@ def main():
         del bindings[session_id]
         save_bindings(bindings)
         report(binary, pane_id, "idle", session_id, seq)
-        release(binary, pane_id)
+        release(binary, pane_id, seq + 1)
     return 0
 
 
